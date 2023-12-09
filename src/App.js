@@ -1,8 +1,16 @@
 import React, { useState } from 'react'
 import './App.css'
-
 function App() {
   const[value,setValue]=useState('');
+  let display = document.getElementById('display');
+  //function to check whether 0 is as the first element
+  const checkZero=(number)=>{
+    if(number.slice(0,1)===0){
+      setValue(number(1,))
+      console.log("value called is "+value);
+    }
+  
+  }
   // function to convert positive number to negative and vice versa
   const posNeg=(val)=>{
     if(val<0){
@@ -14,29 +22,29 @@ function App() {
   //function to show numbers on screen and handle the errors
   const calculate=(va)=>{
     try {
+      setValue(checkZero(va));
+      console.log("inside")
       setValue(value+va)
     } catch (error) {
-      console.log('====================================');
-      console.log("error"+error);
-      console.log('====================================');
+      display.va="Invalid Input";
     }
   }
   //function to calculate
   const equal=(valu)=>{
     try {
+      
       setValue(eval(valu))
     } catch (error) {
-      console.log('====================================');
-      console.log("error"+error);
-      console.log('====================================');
+      
+      display.value="Invalid Input";
     }
   }
   return (
       <div className="container">
         <div className="calculator">
           <form action=""  >
-          <div className='display'>
-            <input type="text" value={value}/>
+          <div className='display' >
+            <input type="text" id="display" value={value}/>
           </div>
           <div>
             <input type="button" className='action' value={"AC"} onClick={e=>setValue("")}/>
